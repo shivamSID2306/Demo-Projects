@@ -11,3 +11,13 @@
     transform: translate(0, 0);
   }
 }
+
+.login:hover {
+  color: black;
+  border-bottom: 0.5px solid black;
+}
+
+.register:hover {
+  color: black;
+  border-bottom: 0.5px solid black;
+}

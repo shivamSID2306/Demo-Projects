@@ -1,14 +1,43 @@
 <nav style="width: 100%; background-color: rgba(245, 245, 245, 0.781);" class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">    
       <mat-icon style="color: green;">accessibility_new</mat-icon>
-      <a class="navbar-brand" routerLink="/"><span style="color: green;">Auth</span>entication</a>
+      <a class="navbar-brand" (click)="this.hidden = false" routerLink="/"><span style="color: green;">Auth</span>entication</a>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
+
+          <div *ngIf="!this.userService.currentUserName">
+            <li class="nav-item">
+              <a class="nav-link login" 
+                style="font-size: medium;" 
+                aria-current="page" 
+                routerLink="/login"
+                (click)="onClick()"
+                *ngIf="!this.hidden"
+                >Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link register" 
+                style="font-size: medium;" 
+                *ngIf="this.hidden" 
+                (click)="onClick()"
+                routerLink="/register">Register</a>
+            </li>
+          </div>
+
           <li class="nav-item">
-            <a class="nav-link active" style="font-size: medium;" aria-current="page" routerLink="/login">Login</a>
+            <a class="nav-link title" 
+              style="font-size: medium;" 
+              *ngIf="this.userService.currentUserName != null" 
+              >{{ this.userService.currentUserName }}</a>
           </li>
+          
           <li class="nav-item">
-            <a class="nav-link" style="font-size: medium;" routerLink="/register">Register</a>
+            <button class="btn btn-outline-danger logout" 
+              style="font-size: medium;" 
+              routerLink="/login"
+              (click)="this.userService.currentUserName = null && this.hidden = false"
+              *ngIf="this.userService.currentUserName"
+              >Log Out</button>
           </li>
         </ul>
       </div>

@@ -21,10 +21,15 @@
     </table>
 </div> -->
 <div class="container">
+    <!-- <div>
+        <h1>Welcome, <b>{{ this.userService.currentUserName }}</b></h1>
+    </div> -->
+
     <div class="d-flex justify-content-center my-2">
         <mat-icon class="mt-1">supervisor_account</mat-icon>
         <h1>All Users</h1>
     </div>
+    
     <div class="mat-elevation-z8">
         <mat-table [dataSource]="listData">
     

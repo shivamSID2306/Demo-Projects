@@ -1,3 +1,4 @@
+import { UserService } from 'src/app/services/user.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  hidden: boolean = false;
+
+  constructor(public userService: UserService) { }
 
   ngOnInit(): void {
+    console.log(this.userService.currentUserName);
+  }
+
+  onClick(){
+    this.hidden = !this.hidden
   }
 
 }

@@ -19,6 +19,7 @@
                 <div *ngIf="formControl.mobile.errors.required">Mobile Number is Required!</div>
                 <div *ngIf="formControl.mobile.errors.minlength">Mobile Number must be of 10-digits.</div>
             </div>
+            <div class="alert alert-danger" *ngIf="!formControl.mobile.errors && this.mobileAlreadyTaken">Mobile Number already exists.</div>
         </div>
         <div class="form-group my-3">
             <label for="email">E-mail:</label>
@@ -27,10 +28,11 @@
                 <div *ngIf="formControl.email.errors.required">Email is Required!</div>
                 <div *ngIf="formControl.email.errors.email">Email must be Valid.</div>
             </div>
+            <div class="alert alert-danger" *ngIf="!formControl.email.errors && this.emailAlreadyTaken">Email already exists.</div>
         </div>
         <div class="form-group my-3">
             <label for="email">Password:</label>
-            <input type="password" id="name" formControlName="password" class="form-control" [ngClass]= "{ 'is-invalid': formControl.email.touched && formControl.email.invalid}">
+            <input type="password" id="name" formControlName="password" class="form-control" [ngClass]= "{ 'is-invalid': formControl.password.touched && formControl.password.invalid}">
             <div class="alert alert-danger" *ngIf="formControl.password.touched && formControl.password.errors">
                 <div *ngIf="formControl.password.errors.required">Password is Required!</div>
                 <div *ngIf="formControl.password.errors.minlength">Password must be atleast of 4-characters.</div>

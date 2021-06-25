@@ -10,6 +10,9 @@ export class UserService {
   constructor(private route: Router) { }
   Users = [];
   isAvailable: boolean = false;
+  // currentUser = {};
+  currentUserName: string = null;
+  currentUserPass: string = null;
 
   registerForm: FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -43,14 +46,16 @@ export class UserService {
   }
 
   getUsers(){
-    this.Users =  JSON.parse(localStorage.getItem("Users"));
-    console.log(this.Users);    
+    this.Users =  JSON.parse(localStorage.getItem("Users")); 
     return JSON.parse(localStorage.getItem("Users"));
   }
 
   onLogin(name, pass){
-    this.Users.forEach(user => {
+    this.Users.filter(user => {
       if(user.name === name && user.password === pass){
+        // Object.assign(this.currentUser, [user.name, user.password])
+        this.currentUserName = name;
+        console.log(this.currentUserName);
         this.clearLoginForm();
         alert("Login Successfully.✅");
         this.route.navigateByUrl('/home');
