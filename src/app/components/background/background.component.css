@@ -1,0 +1,60 @@
+.big-circle {
+  position: absolute;
+  top: 0rem;
+  right: 0rem;
+  z-index: -1;
+  opacity: 0.2;
+  height: 85%;
+  animation: big 1.5s ease-in;
+}
+
+.med-circle {
+  position: absolute;
+  top: 40%;
+  right: 30%;
+  opacity: 0.5;
+  z-index: -1;
+  animation: med 1.5s ease-in;
+}
+
+.small-circle {
+  position: absolute;
+  top: 70%;
+  right: 50%;
+  opacity: 0.9;
+  z-index: -1;
+  animation: small 1.5s ease-in;
+}
+
+@keyframes big {
+  0% {
+    opacity: 0;
+    transform: translate(-2rem, 1rem);
+  }
+  100% {
+    opacity: 0.2;
+    transform: translate(0rem, 0rem);
+  }
+}
+
+@keyframes med {
+  0% {
+    opacity: 0;
+    transform: translate(-2rem, -2rem);
+  }
+  100% {
+    opacity: 0.5;
+    transform: translate(0rem, 0rem);
+  }
+}
+
+@keyframes small {
+  0% {
+    opacity: 0;
+    transform: translate(2rem, -2rem);
+  }
+  100% {
+    opacity: 0.9;
+    transform: translate(0rem, 0rem);
+  }
+}

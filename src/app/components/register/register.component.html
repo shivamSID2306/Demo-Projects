@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="d-flex justify-content-center my-3">
+        <mat-icon class="mt-1">receipt</mat-icon>
+        <h1>Register Form</h1>
+    </div>
+
+    <form #f="ngForm" (ngSubmit)="onSubmit()" class="form" [formGroup]="userService.registerForm">
+        <div class="form-group my-3">
+            <label for="name">Name:</label>
+            <input autocomplete="off" type="text" id="name" formControlName="name" class="form-control" [ngClass]= "{ 'is-invalid': formControl.name.touched && formControl.name.invalid}">
+            <div class="alert alert-danger" *ngIf="formControl.name.touched && formControl.name.errors">
+                <div *ngIf="formControl.name.errors.required">Name is Required!</div>
+            </div>
+        </div>
+        <div class="form-group my-3">
+            <label for="mobile">Mobile No.:</label>
+            <input autocomplete="off" id="mobile" formControlName="mobile" class="form-control" [ngClass]= "{ 'is-invalid': formControl.mobile.touched && formControl.mobile.invalid}">
+            <div class="alert alert-danger" *ngIf="formControl.mobile.touched && formControl.mobile.errors">
+                <div *ngIf="formControl.mobile.errors.required">Mobile Number is Required!</div>
+                <div *ngIf="formControl.mobile.errors.minlength">Mobile Number must be of 10-digits.</div>
+            </div>
+        </div>
+        <div class="form-group my-3">
+            <label for="email">E-mail:</label>
+            <input autocomplete="off" type="text" id="name" formControlName="email" class="form-control" [ngClass]= "{ 'is-invalid': formControl.email.touched && formControl.email.invalid}">
+            <div class="alert alert-danger" *ngIf="formControl.email.touched && formControl.email.errors">
+                <div *ngIf="formControl.email.errors.required">Email is Required!</div>
+                <div *ngIf="formControl.email.errors.email">Email must be Valid.</div>
+            </div>
+        </div>
+        <div class="form-group my-3">
+            <label for="email">Password:</label>
+            <input type="password" id="name" formControlName="password" class="form-control" [ngClass]= "{ 'is-invalid': formControl.email.touched && formControl.email.invalid}">
+            <div class="alert alert-danger" *ngIf="formControl.password.touched && formControl.password.errors">
+                <div *ngIf="formControl.password.errors.required">Password is Required!</div>
+                <div *ngIf="formControl.password.errors.minlength">Password must be atleast of 4-characters.</div>
+            </div>
+        </div>
+        <div class="button-group">
+            <button [disabled]="f.invalid" class="btn btn-primary">Register</button>
+            <button (click)="onClear()" type="button" class="btn btn-danger mx-2">Clear Form</button>
+        </div>
+    </form>
+</div>

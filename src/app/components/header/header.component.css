@@ -1,0 +1,13 @@
+.navbar {
+  margin-top: 0;
+  height: 5rem;
+  animation: dropdown 1.6s ease;
+}
+@keyframes dropdown {
+  0% {
+    transform: translate(0, -30vh);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
