@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms'
+import { passValidators } from '../password.validator';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class UserService {
     name: new FormControl('', Validators.required),
     mobile: new FormControl('', [Validators.required,Validators.minLength(10)]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(4)]),
+    password: new FormControl('', [Validators.required, passValidators]),
   })
 
   loginForm: FormGroup = new FormGroup({

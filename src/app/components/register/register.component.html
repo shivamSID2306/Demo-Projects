@@ -35,7 +35,8 @@
             <input type="password" id="name" formControlName="password" class="form-control" [ngClass]= "{ 'is-invalid': formControl.password.touched && formControl.password.invalid}">
             <div class="alert alert-danger" *ngIf="formControl.password.touched && formControl.password.errors">
                 <div *ngIf="formControl.password.errors.required">Password is Required!</div>
-                <div *ngIf="formControl.password.errors.minlength">Password must be atleast of 4-characters.</div>
+                <!-- <div *ngIf="formControl.password.errors.minlength">Password must be atleast of 4-characters.</div> -->
+                <div *ngIf="!formControl.password.errors.required && formControl.password.errors.validPass">Password must be atleast of 8-characters, with atleast 1 capital letter, 1 number and a special character.</div>
             </div>
         </div>
         <div class="button-group">
