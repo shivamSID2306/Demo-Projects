@@ -52,15 +52,17 @@ export class UserService {
 
   onLogin(name, pass){
     this.Users.filter(user => {
-      if(user.name === name && user.password === pass){
-        // Object.assign(this.currentUser, [user.name, user.password])
-        this.currentUserName = name;
-        console.log(this.currentUserName);
-        this.clearLoginForm();
-        alert("Login Successfully.✅");
-        this.route.navigateByUrl('/home');
-        this.isAvailable = true;
-      }
+      if(user.name.includes(name.slice(0,3))){
+        if(user.name === name && user.password === pass){
+          // Object.assign(this.currentUser, [user.name, user.password])
+          this.currentUserName = name;
+          console.log(this.currentUserName);
+          this.clearLoginForm();
+          alert("Login Successfully.✅");
+          this.route.navigateByUrl('/home');
+          this.isAvailable = true;
+        }
+      } 
     })
     if(this.isAvailable === false){
       this.clearLoginForm();
